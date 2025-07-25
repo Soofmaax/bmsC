@@ -1,12 +1,32 @@
-# 📁 _redirects — Redirections permanentes pour Netlify
+# 📁 _redirects — Gestion des redirections pour Netlify.
+# Ce fichier est lu de haut en bas. La première règle qui correspond est appliquée.
 
-# Redirections vers la page d'accueil
+# ==============================================================================
+# 1. REDIRECTIONS PERMANENTES (CODE 301)
+# ==============================================================================
+# Utile pour le SEO et pour créer des URL courtes et mémorisables.
+# Le code 301 indique aux moteurs de recherche que l'adresse a changé de façon définitive.
+# Format : /ancienne-url    /nouvelle-url    301
+
+# Alias pour la page d'accueil
 /accueil      /               301
 /home         /               301
 
-# Redirections vers des sections de la homepage
+# Raccourcis vers les sections de la page d'accueil (ancres)
 /services     /#services      301
 /contact      /#contact       301
-/references   /#references    301
-# Redirection des pages 404 vers l'accueil
-/*    /    404
+/realisations /#realisations  301 # J'ai ajouté celle-ci, elle semble logique
+
+
+# ==============================================================================
+# 2. GESTION DE LA PAGE 404 (PAGE NON TROUVÉE)
+# ==============================================================================
+# Règle "catch-all" (fourre-tout) qui doit toujours être à la fin du fichier.
+#
+# Pratique SEO : Au lieu de rediriger l'utilisateur vers l'accueil (ce qui est déroutant),
+# on affiche le contenu d'une page 404 personnalisée.
+# Cela préserve une bonne expérience utilisateur et évite les problèmes de "soft 404" pour le référencement.
+#
+# Format : /*    /page-a-afficher.html    404
+
+/*            /404.html       404
