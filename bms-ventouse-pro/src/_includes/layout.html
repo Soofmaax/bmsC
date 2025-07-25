@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==========================================================================
+       MÉTADONNÉES DYNAMIQUES
+       ==========================================================================
+       Ces métadonnées sont remplies automatiquement par chaque page via le 
+       front matter YAML. Essentielles pour le SEO et le partage social.
+       ========================================================================== -->
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    
+    <!-- Open Graph - Optimisé pour le partage sur réseaux sociaux -->
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.bmsventouse.fr/src/assets/images/content/og-bms-ventouse.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BMS Ventouse">
+    
+    <!-- Twitter Cards - Optimisé pour Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="https://www.bmsventouse.fr/src/assets/images/content/og-bms-ventouse.jpg">
+
+    <!-- ==========================================================================
+       OPTIMISATION DES PERFORMANCES - PRECONNECT
+       ==========================================================================
+       Pré-connexion aux domaines externes pour accélérer le chargement.
+       Critique pour les performances sur mobile et les connexions lentes.
+       ========================================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- ==========================================================================
+       POLICES DE CARACTÈRES
+       ==========================================================================
+       Police Inter : moderne, lisible, optimisée pour les interfaces web.
+       font-display: swap évite le FOIT (Flash of Invisible Text).
+       ========================================================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ==========================================================================
+       ICÔNES ET BIBLIOTHÈQUES EXTERNES
+       ==========================================================================
+       Font Awesome : icônes professionnelles pour l'interface
+       AOS : animations au scroll pour un effet cinématographique
+       ========================================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!-- ==========================================================================
+       FEUILLES DE STYLE PRINCIPALES
+       ==========================================================================
+       Chemin corrigé pour la nouvelle architecture de fichiers.
+       Le CSS est organisé de manière modulaire pour faciliter la maintenance.
+       ========================================================================== -->
+    <link rel="stylesheet" href="{{ '/src/assets/css/style.css' | url }}">
+
+    <!-- ==========================================================================
+       FAVICONS ET MANIFEST PWA
+       ==========================================================================
+       Icônes optimisées pour tous les appareils et plateformes.
+       Manifest pour une expérience proche d'une app native.
+       ========================================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF8C42">
+    <meta name="msapplication-TileColor" content="#FF8C42">
+    <meta name="theme-color" content="#FF8C42">
+
+    <!-- ==========================================================================
+       OPTIMISATIONS SEO AVANCÉES
+       ==========================================================================
+       Balises supplémentaires pour améliorer le référencement et l'indexation.
+       ========================================================================== -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    
+    <!-- Données structurées pour les moteurs de recherche -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "BMS Ventouse",
+      "description": "Spécialiste logistique audiovisuelle : ventousage, sécurité plateaux, convoyage, shooting photo/fashion. Couverture France entière.",
+      "url": "{{ canonicalUrl }}",
+      "telephone": "+33646005642",
+      "email": "contact@bmsventouse.fr",
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      },
+      "serviceType": [
+        "Ventousage cinéma",
+        "Sécurité plateaux",
+        "Convoyage véhicules",
+        "Shooting photo",
+        "Fashion week",
+        "Logistique audiovisuelle"
+      ]
+    }
+    </script>
+</head>
+
+<body class="{{ bodyClass }}">
+    <!-- ==========================================================================
+       HEADER - NAVIGATION PRINCIPALE
+       ==========================================================================
+       Navigation adaptative avec menu hamburger pour mobile.
+       Optimisée pour l'accessibilité et les interactions tactiles.
+       ========================================================================== -->
+    {% include "header.html" %}
+
+    <!-- ==========================================================================
+       CONTENU PRINCIPAL
+       ==========================================================================
+       Zone où s'injecte le contenu spécifique de chaque page.
+       Utilise la variable 'content' d'Eleventy.
+       ========================================================================== -->
+    <main id="main-content" role="main">
+        {{ content | safe }}
+    </main>
+
+    <!-- ==========================================================================
+       FOOTER - INFORMATIONS ET LIENS
+       ==========================================================================
+       Pied de page avec informations de contact et liens utiles.
+       ========================================================================== -->
+    {% include "footer.html" %}
+
+    <!-- ==========================================================================
+       SCRIPTS JAVASCRIPT
+       ==========================================================================
+       Chargement optimisé des scripts en fin de page pour les performances.
+       Anime.js pour les animations fluides adaptées au secteur audiovisuel.
+       ========================================================================== -->
+    
+    <!-- Anime.js - Bibliothèque d'animation professionnelle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" 
+            integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    
+    <!-- AOS - Animate On Scroll pour les animations au défilement -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Scripts personnalisés - Chargés dans l'ordre de dépendance -->
+    <script src="{{ '/src/assets/js/components/navigation.js' | url }}"></script>
+    <script src="{{ '/src/assets/js/components/animations.js' | url }}"></script>
+    <script src="{{ '/src/assets/js/main.js' | url }}"></script>
+
+    <!-- ==========================================================================
+       INITIALISATION DES BIBLIOTHÈQUES
+       ==========================================================================
+       Configuration et lancement des animations et interactions.
+       ========================================================================== -->
+    <script>
+        // Initialisation AOS avec configuration optimisée
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100,
+            disable: 'phone' // Désactive sur mobile pour les performances
+        });
+        
+        // Gestion du prefers-reduced-motion pour l'accessibilité
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            AOS.init({ disable: true });
+        }
+    </script>
+
+    <!-- ==========================================================================
+       ANALYTICS ET TRACKING (À CONFIGURER)
+       ==========================================================================
+       Placeholder pour Google Analytics ou autres outils de mesure.
+       Respecte le RGPD avec consentement utilisateur.
+       ========================================================================== -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+</body>
+</html>
+

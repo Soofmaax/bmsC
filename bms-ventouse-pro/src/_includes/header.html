@@ -1,0 +1,285 @@
+<!-- ==========================================================================
+     HEADER - NAVIGATION PRINCIPALE
+     ==========================================================================
+     Header responsive avec menu hamburger fonctionnel
+     Optimisé pour l'accessibilité et les performances
+     ========================================================================== -->
+<header class="header" role="banner">
+    <div class="container">
+        <nav class="nav" role="navigation" aria-label="Navigation principale">
+            <!-- ==========================================================================
+                 LOGO - LIEN VERS ACCUEIL
+                 ========================================================================== -->
+            <a href="/" class="logo" aria-label="BMS Ventouse - Retour à l'accueil">
+                <img src="/src/assets/images/icons/android-chrome-192x192.png" 
+                     alt="Logo BMS Ventouse" 
+                     width="40" 
+                     height="40"
+                     loading="eager">
+                <span class="logo-text">
+                    <span class="bms">BMS</span> 
+                    <span class="ventouse">Ventouse</span>
+                </span>
+            </a>
+
+            <!-- ==========================================================================
+                 NAVIGATION DESKTOP/MOBILE
+                 ==========================================================================
+                 Liste de navigation qui se transforme en menu mobile sur petits écrans
+                 ========================================================================== -->
+            <ul class="nav-links" id="main-navigation" role="menubar" aria-hidden="true">
+                <li role="none">
+                    <a href="/" 
+                       class="nav-link" 
+                       role="menuitem"
+                       aria-current="false">
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="/services.html" 
+                       class="nav-link" 
+                       role="menuitem"
+                       aria-current="false">
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="/realisations.html" 
+                       class="nav-link" 
+                       role="menuitem"
+                       aria-current="false">
+                        <span>Références</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="/contact.html" 
+                       class="nav-link" 
+                       role="menuitem"
+                       aria-current="false">
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- ==========================================================================
+                 BOUTON MENU HAMBURGER
+                 ==========================================================================
+                 Bouton pour ouvrir/fermer le menu mobile
+                 Visible uniquement sur mobile et tablette
+                 ========================================================================== -->
+            <button class="menu-toggle" 
+                    type="button"
+                    aria-expanded="false" 
+                    aria-controls="main-navigation"
+                    aria-label="Ouvrir le menu de navigation">
+                <span class="visually-hidden">Menu</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     OVERLAY MENU MOBILE
+     ==========================================================================
+     Overlay sombre qui apparaît derrière le menu mobile
+     Permet de fermer le menu en cliquant à l'extérieur
+     ========================================================================== -->
+<div class="menu-overlay" 
+     aria-hidden="true" 
+     role="presentation">
+</div>
+
+<!-- ==========================================================================
+     STYLES INLINE CRITIQUES
+     ==========================================================================
+     Styles critiques pour éviter le FOUC (Flash of Unstyled Content)
+     Chargés inline pour les performances
+     ========================================================================== -->
+<style>
+/* Styles critiques pour éviter le flash */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    color: #2c3e50;
+    z-index: 1001;
+}
+
+.logo img {
+    border-radius: 8px;
+}
+
+.bms {
+    color: #FF8C42;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #2c3e50;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle span:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: #2c3e50;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link[aria-current="page"] {
+    background-color: #FF8C42;
+    color: white;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .nav {
+        height: 60px;
+        padding: 0 16px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        padding: 80px 20px 20px;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .header.menu-active .nav-links {
+        transform: translateX(0);
+    }
+    
+    .nav-link {
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 4px;
+        font-size: 1.1rem;
+        justify-content: flex-start;
+    }
+    
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+    
+    .header.menu-active ~ .menu-overlay,
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+    .nav-links {
+        width: 100vw;
+        left: 0;
+    }
+}
+</style>
+

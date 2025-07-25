@@ -1,0 +1,12 @@
+# 📁 _redirects — Redirections permanentes pour Netlify
+
+# Redirections vers la page d'accueil
+/accueil      /               301
+/home         /               301
+
+# Redirections vers des sections de la homepage
+/services     /#services      301
+/contact      /#contact       301
+/references   /#references    301
+# Redirection des pages 404 vers l'accueil
+/*    /    404

@@ -1,0 +1,95 @@
+{
+  "name": "bms-ventouse-pro",
+  "version": "2.0.0",
+  "description": "Site vitrine professionnel pour BMS Ventouse - Spécialiste logistique audiovisuelle, ventousage et services cinématographiques",
+  "keywords": [
+    "ventousage",
+    "cinema",
+    "audiovisuel",
+    "logistique",
+    "tournage",
+    "securite-plateau",
+    "convoyage",
+    "shooting-photo",
+    "fashion-week"
+  ],
+  "author": "BMS Ventouse",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://www.bmsventouse.fr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Soofmaax/BmsVentouse.fr"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "eleventy --serve --quiet --port=3000",
+    "build": "eleventy",
+    "build:prod": "NODE_ENV=production eleventy",
+    "clean": "rm -rf _site",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint src/assets/js/**/*.js",
+    "lint:css": "stylelint src/assets/css/**/*.css",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "format": "prettier --write \"src/**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{html,css,js,json,md}\"",
+    "test": "echo \"Tests à implémenter\" && exit 0",
+    "validate": "npm run lint && npm run format:check && npm run build",
+    "deploy": "npm run build:prod && netlify deploy --prod",
+    "deploy:preview": "npm run build && netlify deploy",
+    "optimize:images": "echo \"Optimisation images à implémenter\"",
+    "analyze": "npm run build && bundlesize"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "prettier": "^3.2.5",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "bundlesize": "^0.18.2",
+    "netlify-cli": "^17.15.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,css}": [
+      "eslint --fix",
+      "stylelint --fix"
+    ],
+    "src/**/*.{html,css,js,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "bundlesize": [
+    {
+      "path": "_site/src/assets/css/*.css",
+      "maxSize": "50kb",
+      "compression": "gzip"
+    },
+    {
+      "path": "_site/src/assets/js/*.js",
+      "maxSize": "30kb",
+      "compression": "gzip"
+    }
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
+
