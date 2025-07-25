@@ -6,17 +6,7 @@ bodyClass: page-contact
 layout: layout.html
 ---
 
-<!--
-==========================================================================
-  FICHIER : contact.html
-  PROJET : BMS Ventouse
-  VERSION : 3.0 (Version "Commando" : Conversion & SEO Technique)
-  DESCRIPTION : Page de contact transformée en landing page de conversion,
-                optimisée pour l'action immédiate et la crédibilité maximale.
-==========================================================================
--->
-
-<!-- Schema JSON-LD Amélioré -->
+<!-- Schema JSON-LD pour une meilleure compréhension par les moteurs de recherche -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,22 +21,16 @@ layout: layout.html
         "telephone": "+33646005642",
         "contactType": "customer service",
         "areaServed": {"@type": "Country", "name": "FR"},
-        "availableLanguage": ["French", "English"],
-        "processingTime": "PT5M"
+        "availableLanguage": ["French", "English"]
       }
     ]
   }
 }
 </script>
 
-{% include "header.html" %}
-
 <main>
     <!-- ==========================================================================
        SECTION HÉROS (HERO) - OPTIMISÉE POUR LA CONVERSION IMMÉDIATE
-       --------------------------------------------------------------------------
-       Améliorations : CTA principal mis en avant, indicateur de disponibilité,
-                       preuve sociale (logos) visible "above the fold".
        ========================================================================== -->
     <section class="hero contact-hero" aria-labelledby="hero-title">
         <div class="hero-overlay">
@@ -75,13 +59,10 @@ layout: layout.html
 
     <!-- ==========================================================================
        SECTION CONTACT DÉTAILLÉ
-       --------------------------------------------------------------------------
-       Objectif : Offrir des options de contact alternatives pour les demandes
-                  moins urgentes (devis, planification).
        ========================================================================== -->
     <section id="contact-details" class="section contact-info-section" aria-labelledby="contact-title">
         <div class="container">
-            <h2 id="contact-title" class="section-title" data-aos="fade-up">Autres Moyens de Contact</h2>
+            <h2 id="contact-title" class="section-title" data-aos="fade-up">Nos Points de Contact</h2>
             <ul class="services-grid">
                 <li class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon"><i class="fas fa-envelope-open-text" aria-hidden="true"></i></div>
@@ -93,37 +74,21 @@ layout: layout.html
                     <div class="service-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
                     <h3>Rendez-vous Téléphonique</h3>
                     <p><strong><a href="[URL CALENDLY]" target="_blank" rel="noopener noreferrer">Planifier un appel</a></strong></p>
-                    <p class="text-muted">Choisissez un créneau pour discuter en détail de votre projet avec l'un de nos experts logistique.</p>
+                    <p class="text-muted">Choisissez un créneau pour discuter en détail de votre projet avec nos experts.</p>
                 </li>
                 <li class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon"><i class="fas fa-info-circle" aria-hidden="true"></i></div>
-                    <h3>Informations Générales</h3>
-                    <p>Consultez notre FAQ ci-dessous pour les questions fréquentes sur nos services et délais.</p>
+                    <div class="service-icon"><i class="fas fa-flag" aria-hidden="true"></i></div>
+                    <h3>Zone d'Intervention</h3>
+                    <p class="text-muted">Nos équipes sont mobiles et nous intervenons sur l'ensemble du territoire : <strong>France entière, sans exception.</strong></p>
                 </li>
             </ul>
         </div>
     </section>
 
     <!-- ==========================================================================
-       SECTION FORMULAIRE RAPIDE (Pour la conversion)
-       --------------------------------------------------------------------------
-       Objectif : Capturer les leads qui préfèrent être rappelés.
-       ========================================================================== -->
-    <section class="section" style="background-color: #f8f9fa;" aria-labelledby="quick-form-title">
-        <div class="container">
-            <h2 id="quick-form-title" class="section-title" data-aos="fade-up">Demande de Rappel Express</h2>
-            <form class="quick-form" data-aos="fade-up" data-aos-delay="100">
-                <input type="text" name="project_type" placeholder="Type de projet (ex: Tournage série)" required aria-label="Type de projet">
-                <input type="tel" name="phone" placeholder="Votre téléphone" required aria-label="Votre numéro de téléphone">
-                <button type="submit" class="btn btn-primary">Être rappelé sous 1h</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
        SECTION FOIRE AUX QUESTIONS (FAQ)
        ========================================================================== -->
-    <section class="faq-section section" aria-labelledby="faq-title">
+    <section class="faq-section section" style="background-color: #f8f9fa;" aria-labelledby="faq-title">
         <div class="container">
             <div class="faq-container" data-aos="fade-up">
                 <h2 id="faq-title" class="section-title">Questions Fréquentes</h2>
@@ -145,5 +110,3 @@ layout: layout.html
 <a href="https://wa.me/33646005642?text=Bonjour,%20j'ai%20une%20urgence%20logistique%20pour%20un%20tournage." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contacter BMS Ventouse sur WhatsApp pour une urgence">
     <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
-
-{% include "footer.html" %}
