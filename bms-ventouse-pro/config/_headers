@@ -1,33 +1,51 @@
 # 📄 _headers – Configuration Netlify pour site vitrine statique (2025+)
-# Fichier à placer à la racine de ton dossier de build (ex: dist/, public/, ou le root du projet selon ton framework)
+# Amélioré pour une sécurité et une performance optimales.
 
-# 🔒 Sécurité globale
-/* 
+# 🔒 Sécurité globale appliquée à toutes les pages
+/*
+  # Force la communication en HTTPS (plus sécurisé)
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Empêche le site d'être affiché dans une <iframe> sur un autre site
   X-Frame-Options: DENY
+
+  # Force le navigateur à respecter les types de fichiers (CSS, JS...)
   X-Content-Type-Options: nosniff
+
+  # Désactive un ancien filtre de sécurité de navigateur, moins efficace que la CSP
   X-XSS-Protection: 0
+
+  # Protège la vie privée des utilisateurs lors de la navigation vers d'autres sites
   Referrer-Policy: strict-origin-when-cross-origin
+
+  # Bloque les fonctionnalités potentiellement dangereuses non utilisées (caméra, micro...)
   Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), gyroscope=(), magnetometer=(), accelerometer=(), fullscreen=(self)
-  Content-Security-Policy: 
-    default-src 'self'; 
-    script-src 'self'; 
-    style-src 'self'; 
-    img-src 'self' data: https:; 
-    font-src 'self' https:; 
-    object-src 'none'; 
-    frame-ancestors 'none'; 
+
+  # Liste blanche des sources autorisées pour le contenu (très important)
+  Content-Security-Policy:
+    default-src 'self';
+    script-src 'self' https://cdnjs.cloudflare.com; # Autorise les scripts de votre site + le CDN pour Anime.js
+    style-src 'self';
+    img-src 'self' data: https:; # Autorise les images de votre site, les images "inline" et celles venant d'autres sites sécurisés (https)
+    font-src 'self' https:; # Autorise les polices de votre site et celles venant d'autres sites sécurisés (https)
+    object-src 'none';
+    frame-ancestors 'none';
     base-uri 'self'
 
-# ⚡ Cache optimisé pour les assets statiques versionnés
-/images/*
+# ⚡ Cache optimisé pour les fichiers qui ne changent pas souvent
+# Le navigateur les gardera en mémoire pendant 1 an pour un chargement plus rapide.
+# Les chemins pointent vers la structure du site final (après déploiement).
+/assets/images/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.css
+/assets/css/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.js
+/assets/js/*
   Cache-Control: public, max-age=31536000, immutable
 
-# 🔁 HTML non mis en cache pour éviter les soucis de mise à jour
-/index.html
+# 🔁 HTML non mis en cache pour garantir que les visiteurs voient toujours la dernière version
+# S'applique à toutes les pages .html (index.html, contact.html, etc.)
+/*.html
   Cache-Control: no-cache
+ 
