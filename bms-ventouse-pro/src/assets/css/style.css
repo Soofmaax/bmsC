@@ -1,18 +1,16 @@
 /* ==========================================================================
-   FEUILLE DE STYLE BMS VENTOUSE - VERSION PROFESSIONNELLE
+   FEUILLE DE STYLE  - BMS VENTOUSE
    ==========================================================================
-   Site vitrine optimisé pour le secteur audiovisuel
-   Responsive design avec menu hamburger fonctionnel
    
    @author BMS Ventouse Dev Team
-   @version 2.0.0
+   @version 3.0.0 (Fusion)
    ========================================================================== */
 
 /* ==========================================================================
-   1. VARIABLES CSS GLOBALES
+   1. VARIABLES CSS GLOBALES (DESIGN SYSTEM)
    ========================================================================== */
 :root {
-  /* Couleurs principales */
+  /* -- Couleurs -- */
   --color-primary: #FF8C42;
   --color-primary-dark: #e67e22;
   --color-primary-light: #ffb366;
@@ -22,83 +20,63 @@
   --color-light-alt: #f8f9fa;
   --color-gray: #ecf0f1;
   --color-text: #333333;
-  --color-text-muted: #666666;
-  --color-text-light: #999999;
+  --color-text-muted: #6c757d; /* Couleur du Projet A, plus douce */
   --color-border: #e0e0e0;
-  --color-border-light: #f0f0f0;
-  
-  /* Couleurs d'état */
-  --color-success: #27ae60;
-  --color-warning: #f39c12;
-  --color-error: #e74c3c;
-  
-  /* Typographie */
-  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* -- Typographie (Police "Onest" pour un look 2025) -- */
+  --font-family-base: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --font-weight-black: 800;
   --line-height-base: 1.6;
   --line-height-tight: 1.2;
-  
-  /* Espacements */
-  --spacing-xs: 0.25rem;    /* 4px */
-  --spacing-sm: 0.5rem;     /* 8px */
-  --spacing-md: 1rem;       /* 16px */
-  --spacing-lg: 1.5rem;     /* 24px */
-  --spacing-xl: 2rem;       /* 32px */
-  --spacing-2xl: 3rem;      /* 48px */
-  --spacing-3xl: 4rem;      /* 64px */
-  --spacing-4xl: 5rem;      /* 80px */
-  
-  /* Layout */
+
+  /* -- Espacements -- */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+  --spacing-3xl: 4rem;    /* 64px */
+  --spacing-4xl: 5rem;    /* 80px */
+
+  /* -- Layout -- */
   --header-height: 70px;
   --header-height-mobile: 60px;
   --container-max-width: 1200px;
   --container-padding: 20px;
-  --container-padding-mobile: 16px;
-  
-  /* Rayons de bordure */
-  --radius-sm: 4px;
+
+  /* -- Rayons de bordure -- */
   --radius-md: 8px;
   --radius-lg: 12px;
-  --radius-xl: 16px;
   --radius-full: 50px;
-  
-  /* Ombres */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* -- Ombres -- */
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
-  
-  /* Transitions */
-  --transition-fast: 0.15s ease;
+
+  /* -- Transitions -- */
   --transition-base: 0.3s ease;
-  --transition-slow: 0.5s ease;
-  
-  /* Z-index */
-  --z-dropdown: 100;
-  --z-sticky: 200;
+
+  /* -- Z-index -- */
   --z-header: 1000;
-  --z-overlay: 1100;
-  --z-modal: 1200;
+  --z-overlay: 999;
 }
 
 /* ==========================================================================
    2. RESET ET STYLES DE BASE
    ========================================================================== */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -112,48 +90,23 @@ body {
   overflow-x: hidden;
 }
 
-/* Prévention du scroll horizontal sur mobile */
 body.menu-open {
   overflow: hidden;
 }
 
-/* Liens */
 a {
   color: var(--color-primary);
   text-decoration: none;
   transition: color var(--transition-base);
 }
-
-a:hover,
-a:focus {
+a:hover {
   color: var(--color-primary-dark);
-  outline: none;
 }
 
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-/* Boutons */
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-  transition: all var(--transition-base);
-}
-
-button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* ==========================================================================
@@ -165,345 +118,48 @@ button:focus-visible {
   padding: 0 var(--container-padding);
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--container-padding-mobile);
-  }
-}
-
 .section {
   padding: var(--spacing-4xl) 0;
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding: var(--spacing-3xl) 0;
-  }
+.section-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: var(--font-weight-black);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-dark);
+  line-height: var(--line-height-tight);
 }
 
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+.section-subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ==========================================================================
    4. HEADER ET NAVIGATION
    ========================================================================== */
+/* Note : Les styles critiques du header sont déjà dans header.html pour la performance.
+   Ceux-ci complètent ou surchargent ces styles. */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--z-header);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border-light);
-  transition: all var(--transition-base);
   height: var(--header-height);
+  transition: all var(--transition-base);
 }
-
-@media (max-width: 768px) {
-  .header {
-    height: var(--header-height-mobile);
-  }
-}
-
-/* Header au scroll */
 .header.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: var(--shadow-md);
-  border-bottom-color: var(--color-border);
 }
-
-/* Header masqué (optionnel) */
 .header.hidden {
   transform: translateY(-100%);
 }
 
-/* Navigation principale */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  position: relative;
-}
-
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-black);
-  color: var(--color-dark);
-  text-decoration: none;
-  z-index: calc(var(--z-header) + 1);
-  transition: color var(--transition-base);
-}
-
-.logo:hover {
-  color: var(--color-primary);
-}
-
-.logo .bms {
-  color: var(--color-primary);
-}
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 1.25rem;
-  }
-}
-
-/* Navigation desktop */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--spacing-sm) var(--spacing-md);
-  color: var(--color-dark);
-  font-weight: var(--font-weight-medium);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-base);
-  position: relative;
-}
-
-.nav-link:hover,
-.nav-link:focus,
-.nav-link.active {
-  background-color: var(--color-primary);
-  color: var(--color-light);
-  transform: translateY(-1px);
-}
-
-/* Bouton menu hamburger */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: calc(var(--z-header) + 1);
-  position: relative;
-  border-radius: var(--radius-md);
-  transition: background-color var(--transition-base);
-}
-
-.menu-toggle:hover {
-  background-color: var(--color-gray);
-}
-
-.menu-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Barres du hamburger */
-.menu-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--color-dark);
-  border-radius: 1px;
-  transition: all var(--transition-base);
-  transform-origin: center;
-}
-
-.menu-toggle span:not(:last-child) {
-  margin-bottom: 5px;
-}
-
-/* Animation du hamburger vers X */
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Overlay pour le menu mobile */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: calc(var(--z-header) - 1);
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-base);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 /* ==========================================================================
-   5. NAVIGATION MOBILE
-   ========================================================================== */
-@media (max-width: 768px) {
-  /* Afficher le menu hamburger */
-  .menu-toggle {
-    display: flex;
-  }
-  
-  /* Masquer la navigation desktop */
-  .nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    background: var(--color-light);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 0;
-    padding: calc(var(--header-height-mobile) + var(--spacing-lg)) var(--spacing-lg) var(--spacing-lg);
-    box-shadow: var(--shadow-xl);
-    transform: translateX(-100%);
-    transition: transform var(--transition-base);
-    z-index: var(--z-header);
-    overflow-y: auto;
-  }
-  
-  /* Menu mobile ouvert */
-  .header.menu-active .nav-links {
-    transform: translateX(0);
-  }
-  
-  /* Liens dans le menu mobile */
-  .nav-link {
-    width: 100%;
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--spacing-xs);
-    font-size: 1.1rem;
-    justify-content: flex-start;
-  }
-  
-  .nav-link:hover,
-  .nav-link:focus,
-  .nav-link.active {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-    transform: none;
-  }
-  
-  /* Activer l'overlay quand le menu est ouvert */
-  .header.menu-active ~ .menu-overlay,
-  .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-/* ==========================================================================
-   6. BOUTONS
-   ========================================================================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
-  text-decoration: none;
-  border: 2px solid transparent;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-  min-height: 48px; /* Accessibilité tactile */
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Bouton principal */
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-light);
-  border-color: var(--color-primary);
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  color: var(--color-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Bouton secondaire */
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-dark);
-  border-color: var(--color-dark);
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background-color: var(--color-dark);
-  color: var(--color-light);
-  transform: translateY(-2px);
-}
-
-/* Effet ripple pour les boutons */
-.btn .ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  pointer-events: none;
-  transform: scale(0);
-  animation: ripple-animation 0.6s ease-out;
-}
-
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* ==========================================================================
-   7. HERO SECTION
+   5. HERO SECTION 
    ========================================================================== */
 .hero {
   min-height: 100vh;
@@ -511,257 +167,276 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
   color: var(--color-light);
   position: relative;
   overflow: hidden;
+  background-color: var(--color-dark); /* Couleur de fond si l'image ne charge pas */
 }
-
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('../images/content/bms-ventouse-accueil-signaletique-rue-paris.jpg') center/cover;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('/src/assets/images/content/bms-ventouse-accueil-signaletique-rue-paris.jpg') center/cover;
   opacity: 0.3;
   z-index: 1;
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 800px;
   padding: var(--spacing-xl);
 }
-
 .hero h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: var(--font-weight-black);
   line-height: var(--line-height-tight);
   margin-bottom: var(--spacing-lg);
-  opacity: 0;
-  transform: translateY(30px);
 }
-
-.hero-subtitle {
+.hero p {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   margin-bottom: var(--spacing-2xl);
   opacity: 0.9;
-  opacity: 0;
-  transform: translateY(20px);
 }
-
 .hero-buttons {
   display: flex;
   gap: var(--spacing-lg);
   justify-content: center;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(20px);
+}
+
+/* ==========================================================================
+   6. BOUTONS 
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 48px;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  border-color: var(--color-primary);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-light);
+  border-color: var(--color-light);
+}
+.btn-secondary:hover {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+/* ==========================================================================
+   7. COMPOSANTS SPÉCIFIQUES 
+   ========================================================================== */
+
+/* --- Cartes de service --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-2xl);
+}
+.service-card {
+  background: var(--color-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  text-align: center;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: var(--font-weight-bold);
+}
+.service-card p {
+  color: var(--color-text-muted);
+}
+
+/* --- Accordéon FAQ --- */
+.faq-item {
+  background: var(--color-light);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.faq-question {
+  padding: var(--spacing-lg);
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+.faq-question:hover {
+  background-color: var(--color-light-alt);
+}
+.faq-answer {
+  padding: 0 var(--spacing-lg);
+  color: var(--color-text-muted);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+.faq-item.is-open .faq-answer {
+  padding-bottom: var(--spacing-lg);
+}
+
+/* --- Bouton flottant WhatsApp --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   8. FOOTER 
+   ========================================================================== */
+.footer {
+  background: var(--color-dark);
+  color: var(--color-light-alt);
+  padding: var(--spacing-4xl) 0 0;
+}
+.footer-main {
+  padding-bottom: var(--spacing-3xl);
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: var(--spacing-3xl);
+}
+.footer-brand .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+.footer-brand .footer-logo-img {
+  width: 40px;
+  height: 40px;
+}
+.footer-brand .footer-brand-text {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-black);
+}
+.footer-brand .footer-bms {
+  color: var(--color-primary);
+}
+.footer-description {
+  color: var(--color-text-muted);
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-2xl);
+}
+.footer-column h4 {
+  color: var(--color-light);
+  margin-bottom: var(--spacing-lg);
+  font-weight: var(--font-weight-bold);
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column li {
+  margin-bottom: var(--spacing-sm);
+}
+.footer-column a {
+  color: var(--color-text-muted);
+}
+.footer-column a:hover {
+  color: var(--color-primary-light);
+}
+.footer-column i {
+  margin-right: var(--spacing-sm);
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+.footer-bottom {
+  border-top: 1px solid var(--color-dark-light);
+  padding: var(--spacing-lg) 0;
+}
+.footer-bottom-content {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   9. ACCESSIBILITÉ ET RESPONSIVE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-3xl) 0;
+  }
   .hero-buttons {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
   }
-  
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 280px;
-  }
-}
-
-/* ==========================================================================
-   8. SECTIONS DE SERVICES
-   ========================================================================== */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-2xl);
-  margin-top: var(--spacing-3xl);
-}
-
-.service-card {
-  background: var(--color-light);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
-  transform: scaleX(0);
-  transition: transform var(--transition-base);
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-}
-
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-
-.service-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-light);
-  font-size: 1.5rem;
-}
-
-.service-title {
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-dark);
-  margin-bottom: var(--spacing-md);
-}
-
-.service-description {
-  color: var(--color-text-muted);
-  line-height: 1.6;
-}
-
-/* ==========================================================================
-   9. FOOTER
-   ========================================================================== */
-.footer {
-  background: var(--color-dark);
-  color: var(--color-light);
-  padding: var(--spacing-4xl) 0 var(--spacing-xl);
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-2xl);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.footer-section h3 {
-  font-size: 1.2rem;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-light);
-}
-
-.footer-section p,
-.footer-section a {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-}
-
-.footer-section a:hover {
-  color: var(--color-primary-light);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--spacing-lg);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* ==========================================================================
-   10. ANIMATIONS ET ÉTATS
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* États de chargement */
-.loading {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-/* États d'animation */
-[data-animate] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-[data-animate].animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ==========================================================================
-   11. RESPONSIVE DESIGN - BREAKPOINTS SUPPLÉMENTAIRES
-   ========================================================================== */
-
-/* Tablettes */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 var(--spacing-lg);
-  }
-  
-  .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-xl);
-  }
-}
-
-/* Mobiles larges */
-@media (max-width: 480px) {
-  .container {
-    padding: 0 var(--spacing-md);
-  }
-  
-  .hero-content {
-    padding: var(--spacing-lg);
-  }
-  
-  .service-card {
-    padding: var(--spacing-xl);
-  }
-  
-  .services-grid {
+  .footer-content, .footer-links {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    text-align: center;
+  }
+  .footer-brand .footer-logo {
+    justify-content: center;
+  }
+  .footer-column ul {
+    padding-left: 0;
   }
 }
-
-/* Très petits écrans */
-@media (max-width: 360px) {
-  .nav-links {
-    width: 100vw;
-    left: 0;
-  }
-  
-  .btn {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: 0.9rem;
-  }
-}
-
